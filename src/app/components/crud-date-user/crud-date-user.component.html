@@ -1,0 +1,75 @@
+<br><br>
+<!-- multistep form -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<div id="viewport">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <header>
+        <a >Menu</a>
+      </header>
+      <ul class="nav">
+        <li>
+          <a >
+            <i class="zmdi zmdi-view-dashboard"><button type="button" class="btn text-white btn-block">Busqueda</button></i>
+          </a>
+        </li>
+        <li>
+          <a >
+            <i ><button type="button" class="btn text-white  btn-block"[routerLink]="['/crud-user']">Crear Usuarios</button>
+            </i> 
+          </a>
+        </li>
+
+        <li>
+            <a >
+                <i ><button type="button" class="btn text-white  btn-block"[routerLink]="['/crud-date-user']">Crear Datos</button>
+                </i> 
+              </a>
+           
+        </li>
+      </ul>
+    </div>
+    <!-- Content -->
+    <div id="content">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+         
+<form id="msform">
+
+    <h1>Datos Hoja Glisenia </h1>
+    <h3 class="fs-subtitle">Ingrese las muestras del usuario</h3>
+    <br>
+    
+    <span>Dia de toma muestra</span><input type="date" name="cedula" placeholder="Dia" required />
+    <span>Glucosa en  Ayunas</span><input type="number" min="20" max="600"name="Valor" placeholder="Ayunas" required/>
+    <span> Insulina NPH/LANTUS</span><input type="text" name="nph1" placeholder="Cantidad" required/>
+
+    <span>Muestra RAPIDA/ULTRA RAP</span><input type="number"min="1" name="rapida1" placeholder="RAPIDA/ULTRA RAP" required/>
+    
+    <span>Glucosa Media Mañana</span><input type="number"min="1" name="mediaManana" placeholder="Media Mañana" required/>
+    <span>Muestra RAPIDA/ULTRA RAP</span><input type="number"min="1" name="rapida2" placeholder="RAPIDA/ULTRA RAP" required/>
+    
+    <span>Glucosa Almuerzo</span><input type="number"min="1" name="almuerzo" placeholder="Almuerzo" required/>
+    <span>Muestra RAPIDA/ULTRA RAP</span><input type="number"min="1" name="rapida3" placeholder="RAPIDA/ULTRA RAP" required/>
+    
+    <span>Glucosa Media Tarde</span><input type="number" min="1"name="number" placeholder="Media Tarde" required/>
+    <span>Muestra RAPIDA/ULTRA RAP</span><input type="number"min="1" name="rapida4" placeholder="RAPIDA/ULTRA RAP" required/>
+    
+    <span>Glucosa Merienda</span><input type="number"min="1" name="number" placeholder="Merienda" required/>
+    <span>Muestra RAPIDA/ULTRA RAP</span><input type="number"min="1" name="rapida5" placeholder="RAPIDA/ULTRA RAP" required/>
+    
+    <span>Insulina NPH/LANTUS</span><input type="number" nim="1" name="nph2" placeholder="NPH/LANTUS" required/>
+
+    <span>Glucosa antes de Dormir</span><input type="number" nim="1" name="Dormir" placeholder="Dormir" required/>
+
+    <span><span>Insulina NPH/LANTUS</span><input type="number" nim="1" name="nph2" placeholder="NPH/LANTUS" required/>
+
+    <span>Total correción insulina en el dia</span><input type="number" name="Correcion1" placeholder="Total correción insulina en el dia" required/>
+
+    <span><span>Observaciones</span><input type="text" nim="1" name="Observaciones" placeholder="Observaciones" required/>
+
+    
+    <button type="submit" class="btn btn-primary" >Crear</button>
+  <!-- fieldsets -->
+  
