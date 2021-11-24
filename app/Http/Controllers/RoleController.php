@@ -8,13 +8,13 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('permission:index-rol|store-rol|update-rol|destroy-rol', ['only' => ['index', ' show']]);
-        $this->middleware('permission:store-rol', ['only' => ['store']]);
-        $this->middleware('permission:update-rol', ['only' => ['update']]);
-        $this->middleware('permission:destroy-rol', ['only' => ['destroy', 'destroys']]);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:index-rol|store-rol|update-rol|destroy-rol', ['only' => ['index', ' show']]);
+    //     $this->middleware('permission:store-rol', ['only' => ['store']]);
+    //     $this->middleware('permission:update-rol', ['only' => ['update']]);
+    //     $this->middleware('permission:destroy-rol', ['only' => ['destroy', 'destroys']]);
+    // }
 
     /**
      * Display a listing of the resource.

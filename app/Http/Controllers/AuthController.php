@@ -84,15 +84,28 @@ class AuthController extends Controller
         ]);
     }
 
+    // public function logout(Request $request)
+    // {
+    //     $user = User::firstWhere('dni', $request->input('user.dni'));
+
+    //     $user->tokens()->where('token', $request->input('user.token'))->delete();
+
+    //     return response()->json([
+    //         'msg' => [
+    //             'summary' => 'Logged out',
+    //             'detail' => '',
+    //             'code' => '200'
+    //         ]
+    //     ], 200);
+    // }
     public function logout(Request $request)
     {
-        $user = User::firstWhere('dni', $request->input('user.dni'));
-
-        $user->tokens()->where('token', $request->input('user.token'))->delete();
-
+        // $user->tokens()->delete();
+        $request->user()->currentAccessToken()->delete();
+        // $user->tokens()->where('id', $tokenId)->delete();
         return response()->json([
             'msg' => [
-                'summary' => 'logout',
+                'summary' => 'Logged out',
                 'detail' => '',
                 'code' => '200'
             ]

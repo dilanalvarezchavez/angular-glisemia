@@ -11,13 +11,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('permission:index-user|store-user|update-user|destroy-user', ['only' => ['index', ' show']]);
-        $this->middleware('permission:store-user', ['only' => ['store']]);
-        $this->middleware('permission:update-user', ['only' => ['update']]);
-        $this->middleware('permission:destroy-user', ['only' => ['destroy', 'destroys']]);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:index-user|store-user|update-user|destroy-user', ['only' => ['index', ' show']]);
+    //     $this->middleware('permission:store-user', ['only' => ['store']]);
+    //     $this->middleware('permission:update-user', ['only' => ['update']]);
+    //     $this->middleware('permission:destroy-user', ['only' => ['destroy', 'destroys']]);
+    // }
 
     public function index()
     {
@@ -31,7 +31,7 @@ class UserController extends Controller
             ]
         );
     }
-    ///
+
 
     /**
      * Store a newly created resource in storage.
@@ -62,10 +62,23 @@ class UserController extends Controller
 
     /**
      * Display the specified resource.
+
      * @param \App\Models\Client $client
      * 
      * @return ClientResource
      * 
+
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+
+
+
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
     public function show(User $user)
     {
@@ -78,29 +91,18 @@ class UserController extends Controller
                 ]
             ]);
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateUserRequest $request, User $users)
+
+    public function update(Request $request, User $user)
     {
-        $users->dni = $request->input('dni');
-        $users->name = $request->input('name');
-        $users->phone = $request->input('phone');
-        $users->password = $request->input('password');
+        $user->dni = $request->input('dni');
+        $user->name = $request->input('name');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
 
-
-        $users->save();
-
-
-
-        return (new UserResource($users))
+        return (new UserResource($user))
             ->additional([
                 'msg' => [
-                    'summary' => 'usuario actualizada',
+                    'summary' => 'Usuario Creado',
                     'detail' => '',
                     'code' => '200'
                 ]
@@ -113,9 +115,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user)
+
+    public function destroy(Request $request, User $user)
     {
-        $user = User::find($user);
         $user->delete();
         return (new UserResource($user))
             ->additional([
