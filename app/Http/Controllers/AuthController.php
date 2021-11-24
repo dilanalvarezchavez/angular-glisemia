@@ -27,7 +27,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $user = User::firstWhere('dni', $request->input('dni'));
-       
+
         // if (!$user) {
         //     throw new ModelNotFound();
         // }
@@ -57,8 +57,8 @@ class AuthController extends Controller
         $user->dni = $request->input('dni');
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
-        $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
+        $user->email = $request->input('email');
         $user->save();
 
         $token = $user->createToken($user->email)->plainTextToken;
@@ -85,15 +85,28 @@ class AuthController extends Controller
         ]);
     }
 
+    // public function logout(Request $request)
+    // {
+    //     $user = User::firstWhere('dni', $request->input('user.dni'));
+
+    //     $user->tokens()->where('token', $request->input('user.token'))->delete();
+
+    //     return response()->json([
+    //         'msg' => [
+    //             'summary' => 'Logged out',
+    //             'detail' => '',
+    //             'code' => '200'
+    //         ]
+    //     ], 200);
+    // }
     public function logout(Request $request)
     {
-        $user = User::firstWhere('dni', $request->input('user.dni'));
-
-        $user->tokens()->where('token', $request->input('user.token'))->delete();
-
+        // $user->tokens()->delete();
+        $request->user()->currentAccessToken()->delete();
+        // $user->tokens()->where('id', $tokenId)->delete();
         return response()->json([
             'msg' => [
-                'summary' => 'logout',
+                'summary' => 'Logged out',
                 'detail' => '',
                 'code' => '200'
             ]

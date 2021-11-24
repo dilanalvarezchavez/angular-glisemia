@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +25,41 @@ use App\Http\Controllers\AuthController;
 Route::prefix('auth')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout']);
-    // Route::post('password-forgot', [AuthController::class, 'passwordForgot']);
-    // Route::post('user-unlock', [AuthController::class, 'userUnlock']);
-    // Route::post('user-unlock', [AuthController::class, 'userUnlock']);
-    // Route::post('email-verified', [AuthController::class, 'emailVerified']);
+    Route::middleware(['auth:sanctum'])
+        ->post('logout', [AuthController::class, 'logout']);
+    // Route::post('logout', [AuthController::class, 'logout']);
 });
 
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::apiResource('users', UserController::class);
+    Route::prefix('user')->group(function () {
+        Route::patch('destroys', [UserController::class, 'destroys']);
+    });
+});
+
+
+
+Route::get('init', function () {
+    if (env('APP_ENV') != 'local') {
+        return response()->json('El sistema se encuentra en producción.', 500);
+    }
+
+    DB::select('drop schema if exists public cascade;');
+    DB::select('drop schema if exists authentication cascade;');
+    DB::select('drop schema if exists core cascade;');
+    DB::select('drop schema if exists job_board cascade;');
+
+    DB::select('create schema public;');
+    DB::select('create schema authentication;');
+    DB::select('create schema core;');
+    DB::select('create schema job_board;');
+
+    Artisan::call('migrate', ['--seed' => true]);
+
+    return response()->json([
+        'msg' => [
+            'Los esquemas fueron creados correctamente.',
+            'Las migraciones fueron creadas correctamente'
+        ]
+    ]);
+});

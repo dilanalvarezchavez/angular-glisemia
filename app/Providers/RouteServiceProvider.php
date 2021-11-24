@@ -39,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
             Route::prefix('api')
-                ->middleware(['api'])
+                ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 
@@ -61,19 +61,19 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-    protected function mapApiRoutes()
-    {
-        $version = 'v1';
-        Route::prefix("api/${version}")
-            ->middleware('api')
-            ->group(base_path("routes/api/${version}/public.php"));
+    // protected function mapApiRoutes()
+    // {
+    //     $version = 'v1';
+    //     Route::prefix("api/${version}")
+    //         ->middleware('api')
+    //         ->group(base_path("routes/api/${version}/public.php"));
 
-        Route::prefix("api/${version}")
-            ->middleware(['api', 'auth:sanctum','verify_user_blocked'])
-            ->group(base_path("routes/api/${version}/private.php"));
+    //     Route::prefix("api/${version}")
+    //         ->middleware(['api', 'auth:sanctum','verify_user_blocked'])
+    //         ->group(base_path("routes/api/${version}/private.php"));
 
-        Route::prefix("api/${version}")
-            ->middleware(['api', 'auth:sanctum'])
-            ->group(base_path("routes/api/${version}/authentication.php"));
-    }
+    //     Route::prefix("api/${version}")
+    //         ->middleware(['api', 'auth:sanctum'])
+    //         ->group(base_path("routes/api/${version}/authentication.php"));
+    // }
 }
