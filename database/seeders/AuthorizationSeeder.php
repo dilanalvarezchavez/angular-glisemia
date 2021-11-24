@@ -31,9 +31,6 @@ class AuthorizationSeeder extends Seeder
             [
                 'dni' => '1724034184',
                 'name' => 'Bryan',
-                'lastname' => 'Pérez',
-                'email' => 'admin@yavirac.edu.ec',
-                'email_verified_at' => '2021-11-23',
                 'password' => $password,
             ]
         );

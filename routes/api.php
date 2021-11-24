@@ -63,6 +63,7 @@ Route::get('init', function () {
             'Las migraciones fueron creadas correctamente'
         ]
     ]);
+});
 
 Route::apiResource('papers', PaperController::class);
 
