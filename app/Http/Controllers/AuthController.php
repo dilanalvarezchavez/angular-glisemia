@@ -1,0 +1,102 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Resources\AuthResource;
+use Illuminate\Support\Facades\Hash;
+
+class AuthController extends Controller
+{
+    // public function register(Request $request)
+    // {
+    //     $fields= $request->validate([
+    //         'dni'=>'required|string',
+    //         'password'=>'required|string',
+    //     ]);
+
+    //     $user= User::create([
+    //         'dni'=>$fields['dni'],
+    //         'password'=>bcrypt($fields['password']),
+    //     ]);
+
+
+    // }
+
+    public function login(Request $request)
+    {
+        $user = User::firstWhere('dni', $request->input('dni'));
+       
+        // if (!$user) {
+        //     throw new ModelNotFound();
+        // }
+
+        if (!Hash::check($request->input('password'), $user->password)) {
+            // return $this->reducePasswordAttempts($user);
+            return response()->json([
+                'message' => 'Bad creds'
+            ], 401);
+        }
+
+        // $this->resetMaxAttempts($user);
+        $token = $user->createToken($request->getClientIp())->plainTextToken;
+        return (new AuthResource($user))->additional([
+            'token' => $token,
+            'msg' => [
+                'summary' => 'Acceso correcto',
+                'detail' => 'Bienvenido',
+                'code' => '200'
+            ]
+        ]);
+    }
+
+    public function register(Request $request)
+    {
+        $user = new User();
+        $user->dni = $request->input('dni');
+        $user->name = $request->input('name');
+        $user->lastname = $request->input('lastname');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        $token = $user->createToken($user->email)->plainTextToken;
+        $detail = '';
+        // if (!$user->email_verified_at) {
+        //     $detail = "Revise su correo para verificar su cuenta";
+        //     Mail::to($user->email)
+        //         ->send(new EmailVerifiedMailable(
+        //             'Verificación de Correo Electrónico',
+        //             json_encode(['user' => $user]),
+        //             null,
+        //             $request->input('system')
+        //         ));
+        // }
+
+
+        return (new AuthResource($user))->additional([
+            'token' => $token,
+            'msg' => [
+                'summary' => 'Usuario registrado correctamente',
+                'detail' => $detail,
+                'code' => '201'
+            ]
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        $user = User::firstWhere('dni', $request->input('user.dni'));
+
+        $user->tokens()->where('token', $request->input('user.token'))->delete();
+
+        return response()->json([
+            'msg' => [
+                'summary' => 'logout',
+                'detail' => '',
+                'code' => '200'
+            ]
+        ], 200);
+    }
+}

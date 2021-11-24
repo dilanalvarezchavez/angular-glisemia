@@ -26,10 +26,5 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
-        //agregamos el usuario Super Admin
-        // Otorga implícitamente todos los permisos a la función "Superadministrador"       
-        Gate::before(function ($user, $ability) {
-            return $user->ci == '1754052718' ?? null;
-        });
     }
 }
