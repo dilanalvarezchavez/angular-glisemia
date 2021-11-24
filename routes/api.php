@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaperController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,4 +63,9 @@ Route::get('init', function () {
             'Las migraciones fueron creadas correctamente'
         ]
     ]);
+
+Route::apiResource('papers', PaperController::class);
+
+Route::prefix('paper')->group(function () {
+    Route::patch('{paper}', [PaperController::class, 'destroy']);
 });

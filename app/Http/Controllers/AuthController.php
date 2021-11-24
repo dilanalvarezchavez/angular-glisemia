@@ -56,12 +56,11 @@ class AuthController extends Controller
         $user = new User();
         $user->dni = $request->input('dni');
         $user->name = $request->input('name');
-        $user->lastname = $request->input('lastname');
         $user->password = bcrypt($request->input('password'));
         $user->email = $request->input('email');
         $user->save();
 
-        $token = $user->createToken($user->email)->plainTextToken;
+        $token = $user->createToken($user->name)->plainTextToken;
         $detail = '';
         // if (!$user->email_verified_at) {
         //     $detail = "Revise su correo para verificar su cuenta";
