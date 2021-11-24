@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PaperController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,9 @@ Route::prefix('auth')->group(function () {
     // Route::post('email-verified', [AuthController::class, 'emailVerified']);
 });
 
+
+Route::apiResource('papers', PaperController::class);
+
+Route::prefix('paper')->group(function () {
+    Route::patch('{paper}', [PaperController::class, 'destroy']);
+});

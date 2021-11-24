@@ -27,7 +27,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $user = User::firstWhere('dni', $request->input('dni'));
-       
+
         // if (!$user) {
         //     throw new ModelNotFound();
         // }
@@ -56,12 +56,10 @@ class AuthController extends Controller
         $user = new User();
         $user->dni = $request->input('dni');
         $user->name = $request->input('name');
-        $user->lastname = $request->input('lastname');
-        $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
-        $token = $user->createToken($user->email)->plainTextToken;
+        $token = $user->createToken($user->name)->plainTextToken;
         $detail = '';
         // if (!$user->email_verified_at) {
         //     $detail = "Revise su correo para verificar su cuenta";
