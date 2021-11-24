@@ -11,13 +11,13 @@ use Illuminate\Http\Request;
 
 class PaperController extends Controller
 {
-    // function __construct()
-    // {
-    //     $this->middleware('permission:ver-paper|crear-paper|editar-paper|borrar-paper', ['only' => ['index']]);
-    //     $this->middleware('permission:crear-paper', ['only' => ['create', 'store']]);
-    //     $this->middleware('permission:editar-paper', ['only' => ['edit', 'update']]);
-    //     $this->middleware('permission:borrar-paper', ['only' => ['destroy']]);
-    // }
+    function __construct()
+    {
+        $this->middleware('permission:index-paper|store-paper|update-paper|destroy-paper', ['only' => ['index', 'show']]);
+        $this->middleware('permission:store-paper', ['only' => ['store']]);
+        $this->middleware('permission:update-paper', ['only' => ['update']]);
+        $this->middleware('permission:destroy-paper', ['only' => ['destroy', 'destroys']]);
+    }
 
     public function index()
     {

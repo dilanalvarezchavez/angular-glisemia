@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PaperController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +37,16 @@ Route::apiResource('papers', PaperController::class);
 
 Route::prefix('paper')->group(function () {
     Route::patch('{paper}', [PaperController::class, 'destroy']);
+});
+
+Route::apiResource('users', UserController::class);
+
+Route::prefix('user')->group(function () {
+    Route::patch('{user}', [UserController::class, 'destroy']);
+});
+
+Route::apiResource('roles', RoleController::class);
+
+Route::prefix('role')->group(function () {
+    Route::patch('{role}', [RoleController::class, 'destroy']);
 });

@@ -24,19 +24,21 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'ci' => ['required', 'max:100'],
+            'dni' => ['required'],
+            'name' => ['required', 'max:100'],
+            'phone' => ['required', 'max:10'],
             'password' => ['required', 'min:8', 'max:16'],
-            'roles' => ['required'],
+
         ];
     }
     public function attributes()
     {
         return [
+            'dni' => 'identifacion',
             'name' => 'nombre',
-            'ci' => 'identificacion',
+            'phone' => 'telefono',
             'password' => 'contraseña',
-            'roles' => 'roles',
+
 
         ];
     }
