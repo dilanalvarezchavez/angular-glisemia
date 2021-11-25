@@ -100,6 +100,7 @@ class UserController extends Controller
     {
         $user->dni = $request->input('dni');
         $user->name = $request->input('name');
+        $user->phone = $request->input('phone');
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
