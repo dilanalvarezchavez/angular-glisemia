@@ -13,13 +13,13 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    // function __construct()
-    // {
-    //     $this->middleware('permission:index-user|store-user|update-user|destroy-user', ['only' => ['index', ' show']]);
-    //     $this->middleware('permission:store-user', ['only' => ['store']]);
-    //     $this->middleware('permission:update-user', ['only' => ['update']]);
-    //     $this->middleware('permission:destroy-user', ['only' => ['destroy', 'destroys']]);
-    // }
+    function __construct()
+    {
+        $this->middleware('permission:index-user|store-user|update-user|destroy-user', ['only' => ['index', ' show']]);
+        $this->middleware('permission:store-user', ['only' => ['store']]);
+        $this->middleware('permission:update-user', ['only' => ['update']]);
+        $this->middleware('permission:destroy-user', ['only' => ['destroy', 'destroys']]);
+    }
 
     public function index()
     {
@@ -47,7 +47,7 @@ class UserController extends Controller
         $users->name = $request->input('name');
         $users->dni = $request->input('dni');
         $users->phone = $request->input('phone');
-        $users->password = $request->input('password');
+        $users->password = bcrypt($request->input('password'));
         // $users->assignRole('User');
         $users->assignRole($request->input('role'));
 

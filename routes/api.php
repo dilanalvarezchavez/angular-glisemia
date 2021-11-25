@@ -33,9 +33,20 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+
     Route::apiResource('users', UserController::class);
     Route::prefix('user')->group(function () {
         Route::patch('destroys', [UserController::class, 'destroys']);
+    });
+
+    Route::apiResource('papers', PaperController::class);
+    Route::prefix('paper')->group(function () {
+        Route::patch('{paper}', [PaperController::class, 'destroy']);
+    });
+
+    Route::apiResource('roles', RoleController::class);
+    Route::prefix('role')->group(function () {
+        Route::patch('{role}', [RoleController::class, 'destroy']);
     });
 });
 
@@ -66,20 +77,9 @@ Route::get('init', function () {
     ]);
 });
 
-Route::apiResource('papers', PaperController::class);
 
-Route::prefix('paper')->group(function () {
-    Route::patch('{paper}', [PaperController::class, 'destroy']);
-});
+// Route::apiResource('users', UserController::class);
 
-Route::apiResource('users', UserController::class);
-
-Route::prefix('user')->group(function () {
-    Route::patch('{user}', [UserController::class, 'destroy']);
-});
-
-Route::apiResource('roles', RoleController::class);
-
-Route::prefix('role')->group(function () {
-    Route::patch('{role}', [RoleController::class, 'destroy']);
-});
+// Route::prefix('user')->group(function () {
+//     Route::patch('{user}', [UserController::class, 'destroy']);
+// });
