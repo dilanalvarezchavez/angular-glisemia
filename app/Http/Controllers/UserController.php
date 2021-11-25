@@ -8,6 +8,8 @@ use App\Http\Requests\Users\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+
 
 class UserController extends Controller
 {
@@ -46,6 +48,8 @@ class UserController extends Controller
         $users->dni = $request->input('dni');
         $users->phone = $request->input('phone');
         $users->password = $request->input('password');
+        // $users->assignRole('User');
+        $users->assignRole($request->input('role'));
 
         $users->save();
 
