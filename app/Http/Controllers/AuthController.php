@@ -58,6 +58,7 @@ class AuthController extends Controller
         $user->name = $request->input('name');
         $user->phone = $request->input('phone');
         $user->password = bcrypt($request->input('password'));
+        $user->assignRole($request->input('role'));
         $user->save();
 
         $token = $user->createToken($user->name)->plainTextToken;
