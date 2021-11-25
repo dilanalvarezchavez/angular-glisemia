@@ -35,7 +35,7 @@ class AuthController extends Controller
         if (!Hash::check($request->input('password'), $user->password)) {
             // return $this->reducePasswordAttempts($user);
             return response()->json([
-                'message' => 'Bad creds'
+                'message' => 'credenciales incorrectas'
             ], 401);
         }
 
