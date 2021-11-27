@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
   ) {
     this.FormLogin = this.newFormLogin();
   }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
   newFormLogin(): FormGroup {
     return this.formBuilder.group({
       dni: [null, [Validators.required]],
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
     return this.FormLogin.controls['password'];
   }
   onSubmit() {
-    // console.log('funciona');
+    console.log('funciona');
     if (this.FormLogin.valid) {
       this.Login();
     } else {

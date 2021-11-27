@@ -12,10 +12,10 @@ export class MessageService {
   }
 
   error(error: HttpErrorResponse) {
-    if (error.status === 400) {
+    if (error.status === 401) {
       if (error.error.msg.code === '23505') {
         return Swal.fire({
-          title: 'El registro ya existe',
+          title: 'Credenciales incorrectas',
           text: error.error.data,
           icon: 'error'
         });

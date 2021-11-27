@@ -9,28 +9,29 @@
           <div class="col-md-7">
             <div class="card-body">
               <img class="logo" src="../../../assets/img/logo.png" alt="">
+
               <form [formGroup]="FormLogin" (ngSubmit)="onSubmit()">
                 <a href="javascript:void(0)" class="text-center db"></a>
                 <div class="form-group m-t-40">
                   <div class="col-xs-12">
-                    <input name="dni" id="dni" formControlName="dni" class="form-control" type="dni" required
+                    <input id="dni" formControlName="dni" class="form-control" type="dni" required
                       placeholder="Cedula - Pasaporte">
-                    <!-- <div *ngIf="dniField.invalid && (dniField.touched || dniField.dirty)">
+                    <div *ngIf="dniField.invalid && (dniField.touched || dniField.dirty)">
                       <small *ngIf="dniField.errors?.required" class="p-error">
                         Este campo es obligatorio!!
                       </small>
-                    </div> -->
+                    </div>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-xs-12">
-                    <input class="form-control" type="password" required placeholder="Contraseña" [toggleMask]="true"
+                    <input class="form-control" type="password" required placeholder="Contraseña"
                       formControlName="password">
-                    <!-- <div *ngIf="passwordField.invalid && (passwordField.touched || passwordField.dirty)">
-                <small *ngIf="passwordField.errors?.required" class="p-error">
-                    Este campo es obligatorio!!
-                </small>
-            </div> -->
+                    <div *ngIf="passwordField.invalid && (passwordField.touched || passwordField.dirty)">
+                      <small *ngIf="passwordField.errors?.required" class="p-error">
+                        Este campo es obligatorio!!
+                      </small>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group ">
