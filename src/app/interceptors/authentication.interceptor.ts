@@ -28,6 +28,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
             if ((error.status === 401 || error.status === 403 || error.status === 423) && this.authService.token) {
                 this.authService.removeLogin();
                 this.router.navigate(['/common/access-denied']);
+                console.log('no tiene los permisos asigandos');
             }
 
             // Cuando el usuario no tiene permisos para acceder a la ruta solicitada y no está logueado

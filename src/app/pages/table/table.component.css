@@ -1,0 +1,12 @@
+.card{
+    background-color: rgb(234, 222, 222);
+}
+ label{
+    color:rgb(17, 17, 17);
+    font-size: 15px;
+}
+
+th{
+    color:rgb(17, 17, 17);
+    font-size: 15px;
+}
