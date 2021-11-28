@@ -48,11 +48,9 @@ class PaperController extends Controller
         $papers->ayunas = $request->input('ayunas');
         $papers->nph_lantus = $request->input('nph_lantus');
         $papers->rapida_ultra_rap = $request->input('rapida_ultra_rap');
-        $papers->correcion = $request->input('correcion');
 
         $papers->media_mañana = $request->input('media_mañana');
         $papers->rapida_ultra_rap_m = $request->input('rapida_ultra_rap');
-        $papers->correcion_m = $request->input('correcion');
 
         $papers->almuerzo = $request->input('almuerzo');
         $papers->rapida_ultra_rap_a = $request->input('rapida_ultra_rap_a');
@@ -60,15 +58,15 @@ class PaperController extends Controller
 
         $papers->media_tarde = $request->input('media_tarde');
         $papers->rapida_ultra_rap_t = $request->input('rapida_ultra_rap_t');
-        $papers->correcion_t = $request->input('correcion_t');
 
         $papers->merienda = $request->input('merienda');
         $papers->rapida_ultra_rap_md = $request->input('rapida_ultra_rap_md');
-        $papers->correcion_md = $request->input('correcion_md');
         $papers->nph_lantus_md = $request->input('nph_lantus_md');
 
         $papers->dormir = $request->input('dormir');
         $papers->madrugada = $request->input('madrugada');
+        $papers->correcion_total = $request->input('correcion_total');
+
 
 
 
@@ -117,27 +115,25 @@ class PaperController extends Controller
         $papers->ayunas = $request->input('ayunas');
         $papers->nph_lantus = $request->input('nph_lantus');
         $papers->rapida_ultra_rap = $request->input('rapida_ultra_rap');
-        $papers->correcion = $request->input('correcion');
 
         $papers->media_mañana = $request->input('media_mañana');
         $papers->rapida_ultra_rap_m = $request->input('rapida_ultra_rap');
-        $papers->correcion_m = $request->input('correcion');
 
         $papers->almuerzo = $request->input('almuerzo');
         $papers->rapida_ultra_rap_a = $request->input('rapida_ultra_rap_a');
-        $papers->correcion_a = $request->input('correcion_a');
 
         $papers->media_tarde = $request->input('media_tarde');
         $papers->rapida_ultra_rap_t = $request->input('rapida_ultra_rap_t');
-        $papers->correcion_t = $request->input('correcion_t');
 
         $papers->merienda = $request->input('merienda');
         $papers->rapida_ultra_rap_md = $request->input('rapida_ultra_rap_md');
-        $papers->correcion_md = $request->input('correcion_md');
         $papers->nph_lantus_md = $request->input('nph_lantus_md');
 
         $papers->dormir = $request->input('dormir');
         $papers->madrugada = $request->input('madrugada');
+        $papers->correcion_total = $request->input('correcion_total');
+
+        
 
 
 

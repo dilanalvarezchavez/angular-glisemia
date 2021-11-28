@@ -20,27 +20,24 @@ class CreatePapersTable extends Migration
             $table->text('ayunas');
             $table->text('nph_lantus');
             $table->text('rapida_ultra_rap');
-            $table->text('correcion');
 
             $table->text('media_mañana');
             $table->text('rapida_ultra_rap_m');
-            $table->text('correcion_m');
 
             $table->text('almuerzo');
             $table->text('rapida_ultra_rap_a');
-            $table->text('correcion_a');
 
             $table->text('media_tarde');
             $table->text('rapida_ultra_rap_t');
-            $table->text('correcion_t');
 
             $table->text('merienda');
             $table->text('rapida_ultra_rap_md');
-            $table->text('correcion_md');
             $table->text('nph_lantus_md');
 
             $table->text('dormir');
             $table->text('madrugada');
+            $table->text('correcion_total');
+
 
 
 

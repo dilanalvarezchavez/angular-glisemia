@@ -16,19 +16,15 @@ class Paper extends Model
         'ayunas',
         'nph_lantus',
         'rapida_ultra_rap',
-        'correcion',
 
         'media_mañana',
         'rapida_ultra_rap_m',
-        'correcion_m',
 
         'almuerzo',
         'rapida_ultra_rap_a',
-        'correcion_a',
 
         'media_tarde',
         'rapida_ultra_rap_t',
-        'correcion_t',
 
         'merienda',
         'rapida_ultra_rap_md',
@@ -37,6 +33,7 @@ class Paper extends Model
 
         'dormir',
         'madrugada',
+        'correcion_total',
 
 
     ];
