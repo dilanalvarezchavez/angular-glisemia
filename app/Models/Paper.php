@@ -28,7 +28,7 @@ class Paper extends Model
 
         'merienda',
         'rapida_ultra_rap_md',
-    
+
         'nph_lantus_md',
 
         'dormir',
@@ -37,4 +37,8 @@ class Paper extends Model
 
 
     ];
+    function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

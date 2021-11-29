@@ -44,7 +44,7 @@ class PaperController extends Controller
     {
         $papers = new Paper();
         $papers->dia = $request->input('dia');
-
+        $papers->user_id = $request->input('user_id');
         $papers->ayunas = $request->input('ayunas');
         $papers->nph_lantus = $request->input('nph_lantus');
         $papers->rapida_ultra_rap = $request->input('rapida_ultra_rap');
@@ -54,7 +54,7 @@ class PaperController extends Controller
 
         $papers->almuerzo = $request->input('almuerzo');
         $papers->rapida_ultra_rap_a = $request->input('rapida_ultra_rap_a');
-        
+
 
         $papers->media_tarde = $request->input('media_tarde');
         $papers->rapida_ultra_rap_t = $request->input('rapida_ultra_rap_t');
@@ -111,7 +111,7 @@ class PaperController extends Controller
     public function update(UpdatePaperRequest $request, Paper $papers)
     {
         $papers->dia = $request->input('dia');
-
+        $papers->user_id = $request->input('user_id');
         $papers->ayunas = $request->input('ayunas');
         $papers->nph_lantus = $request->input('nph_lantus');
         $papers->rapida_ultra_rap = $request->input('rapida_ultra_rap');
@@ -133,7 +133,7 @@ class PaperController extends Controller
         $papers->madrugada = $request->input('madrugada');
         $papers->correcion_total = $request->input('correcion_total');
 
-        
+
 
 
 

@@ -15,6 +15,9 @@ class CreatePapersTable extends Migration
     {
         Schema::create('papers', function (Blueprint $table) {
             $table->id();
+            //relacion con la tabla usuarios
+            $table->foreignId('user_id')->constrained('users')
+                ->comment('para obtener la informacion del usuario');
             $table->text('dia');
 
             $table->text('ayunas');
