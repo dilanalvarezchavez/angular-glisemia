@@ -5,24 +5,24 @@
         <h5 class="card-title">Crear usuario</h5>
       </div>
       <div class="card-body">
-        <form>
+        <form [formGroup]="UserForm" (ngSubmit)="onSubmit()">
           <div class="row">
             <div class="col-md-4 px-1">
               <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" class="form-control" placeholder="Anthony Salazar">
+                <input type="text" formControlName="name" class="form-control" placeholder="Anthony Salazar">
               </div>
             </div>
             <div class="col-md-4 pl-1">
               <div class="form-group">
                 <label>Cedula o Pasaporte</label>
-                <input type="text" class="form-control" placeholder="17777777 - ZABOOOO">
+                <input type="text" class="form-control"formControlName="dni" placeholder="17777777 - ZABOOOO">
               </div>
             </div>
             <div class="col-md-4 pl-1">
               <div class="form-group">
                 <label>Telefono</label>
-                <input type="text" class="form-control" placeholder="099999999 - 22123123">
+                <input type="text" class="form-control"formControlName="phone" placeholder="099999999 - 22123123">
               </div>
             </div>
           </div>
@@ -31,13 +31,13 @@
             <div class="col-md-6 px-1">
               <div class="form-group">
                 <label for="exampleInputEmail1">Contraseña</label>
-                <input type="password" class="form-control">
+                <input type="password" formControlName="password" class="form-control">
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
                 <label for="exampleInputEmail1">Rol</label>
-                <select class="form-control" aria-label="Default select example">
+                <select class="form-control" formControlName="role" aria-label="Default select example">
                   <option selected>Roles disponibles</option>
                   <option value="1">Admin</option>
                   <option value="2">User</option>
@@ -62,33 +62,23 @@
       </div>
       <div class="card-body">
 
-        <tr *ngFor="let user of usuarioService.users">
-          <!-- <td> {{shop| json }} </td> -->
-          <td>{{user.id}}</td>
-          <td>{{user.name}}</td>
-          <td>{{user.dni}}</td>
-          <td>{{user.password}}</td>
-          <td>{{user.role}}</td>
-          <td>
-            <button type="button" label="Mostrar" (click)=selectUser(user)></button>
-            <button type="button" class="p-button-danger" label="Eliminar" (click)=deleteUser(user)></button>
-          </td>
-        </tr>
+            
         <table class="table ">
           <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>dni</th>
-            <th>password</th>
+          
+            <th>Nombre</th>
+            <th>Telefono</th>
+          
             <th width="220px">Action</th>
+          
           </tr>
-          <tr *ngFor="let user of _usuarioService">
-            <td>{{user.id}}</td>
+          <tr *ngFor="let user of Users">
             <td>{{user.name}}</td>
-            <td>{{user.dni}}</td>
-            <td>{{user.password}}</td>
-            <td>{{user.role}}</td>
-            <td>
+            <td>{{user.phone}}</td>
+          
+            <td>  <button type="button" label="Mostrar" (click)=selectUser(user)></button>
+              <button type="button" class="p-button-danger" label="Eliminar" (click)=deleteUser(user)></button>
+            
             </td>
           </tr>
         </table>

@@ -30,8 +30,8 @@ export class UserComponent implements OnInit {
   newFormUser(): FormGroup {
     return this.formBuilder.group({
       id: [null],
-      name: [null, [Validators.required, Validators.maxLength(50)]],
       dni: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(10)]],
+      name: [null, [Validators.required, Validators.maxLength(50)]],
       phone: [null, [Validators.required, Validators.maxLength(50)]],
       password: [null, [Validators.required, Validators.maxLength(50)]],
       role: [null, [Validators.required, Validators.maxLength(50)]]
@@ -58,7 +58,10 @@ export class UserComponent implements OnInit {
     this.userService.getAll().subscribe(
       response => {
         this.getUser(response.data[0]);
+        
         this.Users = response.data;
+        console.log(typeof this.Users);
+        console.log(this.Users);
       }, error => {
         this.messageService.error(error);
       }
@@ -66,8 +69,10 @@ export class UserComponent implements OnInit {
   }
 
   // crea un nuevo registro en la base de datos
-  storeUser(User: UserModel): void {
+  storeUser(User: UserModel) {
+    console.log("storeUser");
     this.userService.Store(User).subscribe(
+      
       response => {
         this.Updated = false;
         this.UserForm = this.newFormUser();
@@ -145,20 +150,24 @@ export class UserComponent implements OnInit {
       this.Users[index] = User;
     }
   }
-  //metodo para guardar o actualizar
-  onSubmit(User: UserModel) {
+ 
+  onSubmit() {
     if (this.UserForm.valid) {
-      if (User.id) {
-        this.updateUser(User);
+      if (this.idField.value) {
+        this.updateUser(this.UserForm.value);
       } else {
-        this.storeUser(User);
+        this.storeUser(this.UserForm.value);
       }
-      this.UserForm.reset();
     } else {
       this.UserForm.markAllAsTouched();
     }
-  }
-  //metodo para cancelar
+  }//metodo para cancelar
+
+
+
+
+
+
   onCancel() {
     this.Updated = false;
     this.UserForm.reset();
