@@ -54,7 +54,7 @@ class PaperController extends Controller
 
         $papers->almuerzo = $request->input('almuerzo');
         $papers->rapida_ultra_rap_a = $request->input('rapida_ultra_rap_a');
-        $papers->correcion_a = $request->input('correcion_a');
+        
 
         $papers->media_tarde = $request->input('media_tarde');
         $papers->rapida_ultra_rap_t = $request->input('rapida_ultra_rap_t');
