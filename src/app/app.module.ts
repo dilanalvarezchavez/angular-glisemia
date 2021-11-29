@@ -21,6 +21,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from "./login/login.component";
 import { TokenInterceptor } from "./interceptors/token.interceptor";
+import { AuthGuard } from "./guards/auth.guard";
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { TokenInterceptor } from "./interceptors/token.interceptor";
     BrowserModule
   ],
   providers: [
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

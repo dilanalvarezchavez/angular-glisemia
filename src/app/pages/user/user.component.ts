@@ -4,6 +4,9 @@ import { UsersService } from 'app/services/users.service';
 import { UserModel } from '../../models/user/user.model'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'app/services/messages/message.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'user-cmp',
@@ -20,11 +23,19 @@ export class UserComponent implements OnInit {
   UserForm: FormGroup;
   selectedUsers: UserModel[] = [];
   // se cargan las dependencias y se inicializa el formulario
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
     private userService: UsersService,
     private messageService: MessageService,
   ) {
     this.UserForm = this.newFormUser();
+  }
+  logOut() {
+    this.user = null;
+    localStorage.removeItem('token');
+    localStorage.removeItem('auth');
+    this.router.navigate(['/login']);
   }
   // da forma al formulario que manejara los datos
   newFormUser(): FormGroup {
@@ -58,7 +69,7 @@ export class UserComponent implements OnInit {
     this.userService.getAll().subscribe(
       response => {
         this.getUser(response.data[0]);
-        
+
         this.Users = response.data;
         console.log(typeof this.Users);
         console.log(this.Users);
@@ -72,7 +83,7 @@ export class UserComponent implements OnInit {
   storeUser(User: UserModel) {
     console.log("storeUser");
     this.userService.Store(User).subscribe(
-      
+
       response => {
         this.Updated = false;
         this.UserForm = this.newFormUser();
@@ -150,7 +161,7 @@ export class UserComponent implements OnInit {
       this.Users[index] = User;
     }
   }
- 
+
   onSubmit() {
     if (this.UserForm.valid) {
       if (this.idField.value) {

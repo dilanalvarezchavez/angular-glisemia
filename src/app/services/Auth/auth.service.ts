@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 // import themes from '../../assets/themes/themes.json';
 import { PermissionModel } from '../../models/permission/permission.model';
 import { RoleModel } from '../../models/role/role.model';
 import { UserModel } from '../../models/user/user.model';
+
 
 
 @Injectable({
@@ -11,7 +13,8 @@ import { UserModel } from '../../models/user/user.model';
 
 export class AuthService {
 
-  constructor() {
+  usuario: UserModel;
+  constructor(private router: Router) {
   }
 
   // changeTheme(theme: string) {
@@ -78,5 +81,6 @@ export class AuthService {
     localStorage.removeItem('role');
     localStorage.removeItem('permissions');
     localStorage.removeItem('keepSession');
+    this.router.navigate(['/login']);
   }
 }
