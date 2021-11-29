@@ -17,7 +17,7 @@ class Paper extends Model
         'nph_lantus',
         'rapida_ultra_rap',
 
-        'media_mañana',
+        'media_manana',
         'rapida_ultra_rap_m',
 
         'almuerzo',

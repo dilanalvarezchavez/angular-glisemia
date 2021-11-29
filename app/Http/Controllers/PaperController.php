@@ -49,7 +49,7 @@ class PaperController extends Controller
         $papers->nph_lantus = $request->input('nph_lantus');
         $papers->rapida_ultra_rap = $request->input('rapida_ultra_rap');
 
-        $papers->media_mañana = $request->input('media_mañana');
+        $papers->media_manana = $request->input('media_manana');
         $papers->rapida_ultra_rap_m = $request->input('rapida_ultra_rap');
 
         $papers->almuerzo = $request->input('almuerzo');
@@ -116,7 +116,7 @@ class PaperController extends Controller
         $papers->nph_lantus = $request->input('nph_lantus');
         $papers->rapida_ultra_rap = $request->input('rapida_ultra_rap');
 
-        $papers->media_mañana = $request->input('media_mañana');
+        $papers->media_manana = $request->input('media_manana');
         $papers->rapida_ultra_rap_m = $request->input('rapida_ultra_rap');
 
         $papers->almuerzo = $request->input('almuerzo');

@@ -58,7 +58,7 @@ class UpdatePaperRequest extends FormRequest
             'nph_lantus' => 'nph_lantus',
             'rapida_ultra_rap'  => 'rapida_ultra_rap',
 
-            'media_mañana' =>   'media_mañana',
+            'media_manana' =>   'media_manana',
             'rapida_ultra_rap_m' =>  'rapida_ultra_rap_m',
 
             'almuerzo' =>  'almuerzo',

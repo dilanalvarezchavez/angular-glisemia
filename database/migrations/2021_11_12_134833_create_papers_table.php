@@ -21,7 +21,7 @@ class CreatePapersTable extends Migration
             $table->text('nph_lantus');
             $table->text('rapida_ultra_rap');
 
-            $table->text('media_mañana');
+            $table->text('media_manana');
             $table->text('rapida_ultra_rap_m');
 
             $table->text('almuerzo');
