@@ -15,7 +15,7 @@ class CreatePapersTable extends Migration
     {
         Schema::create('papers', function (Blueprint $table) {
             $table->id();
-            $table->date('dia');
+            $table->text('dia');
 
             $table->text('ayunas');
             $table->text('nph_lantus');
