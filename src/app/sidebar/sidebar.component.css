@@ -5,6 +5,10 @@
 a{
     color: white;
 }
+i{
+    /* background-color: aqua; */
+    color: aqua;
+}
 
 p{
     color: rgb(253, 252, 251);
