@@ -17,10 +17,11 @@ class PaperResource extends JsonResource
         return [
             'data' => [
                 'id'  => $this->id,
+                'user_id' => $this->user_id,
                 'dia' => $this->dia,
 
                 'ayunas' => $this->ayunas,
-                'nph_lantus' => $this->id,
+                'nph_lantus' => $this->nph_lantus,
                 'rapida_ultra_rap'  => $this->rapida_ultra_rap,
 
                 'media_manana' => $this->media_manana,
