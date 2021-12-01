@@ -4,6 +4,7 @@
       <div class="card-header">
         <h4 class="card-title">Glicemias</h4>
       </div>
+      <input type="text" placeholder="Buscar por paciente" class="form-control col-md-3" [(ngModel)]="filteredString"/>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table">
@@ -33,7 +34,8 @@
                 <th>Madrugada</th>
                 <th>Correciones</th>
               </tr>
-              <tr *ngFor="let paper of papers">
+              <tr *ngFor="let paper of papers "> 
+                <!-- | filter:filteredString  -->
                 <th>{{paper.dia}}</th>
                 <th>{{paper.user_id}}</th>
                 <th>{{paper.ayunas}}</th>

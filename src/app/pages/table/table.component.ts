@@ -14,6 +14,7 @@ import { PaperModel } from '../../models/paper/paper.model';
 })
 
 export class TableComponent implements OnInit {
+  filteredString:String='';
   paper: PaperModel = {};
   papers: PaperModel[] = [];
   ngOnInit() {
@@ -23,7 +24,8 @@ export class TableComponent implements OnInit {
   constructor(
     private PaperService: PaperService,
     private MessageService: MessageService,
-  ) { }
+  
+    ) { }
   // obtiene un registro de la base de datos
   getPaper(Paper: PaperModel) {
     this.PaperService.getOne(Paper.id).subscribe(
@@ -49,4 +51,5 @@ export class TableComponent implements OnInit {
       }
     );
   }
+
 }
