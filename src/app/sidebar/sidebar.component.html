@@ -9,16 +9,28 @@
       <img src="../../assets/img/logo.png" alt="">
     </a>
   </div>
-  <ul class="nav">
+  <!-- <ul class="nav">
     <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
-
-      <!-- <a *ngIf="user.dni != '0' && user.role != 'Admin'" class="dropdown-item"
-        routerLink="/auth/ingresarInformeE">Informes</a> -->
-
       <a [routerLink]="[menuItem.path]">
         <i class="nc-icon {{menuItem.icon}}"></i>
         <p>{{menuItem.title}}</p>
       </a>
     </li>
+  </ul> -->
+  <ul class="nav">
+    <li><a class="paper" routerLink="/dashboard"><i class="fas fa-newspaper"></i>
+        <p>Hoja</p>
+      </a></li>
+    <li *ngIf="isLogged">
+      <a class="user" routerLink="/user"><i class="fas fa-user"></i>
+        <p>Usuarios</p>
+      </a>
+    </li>
+    <li *ngIf="isLogged">
+      <a class="datos" routerLink="/table"><i class="fab fa-elementor"></i>
+        <p>Dato</p>
+      </a>
+    </li>
+
   </ul>
 </div>

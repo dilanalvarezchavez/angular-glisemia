@@ -15,7 +15,6 @@ export class AuthHttpService {
 
   constructor(private httpClient: HttpClient) { }
   login(credentials: LoginModel): Observable<ServerResponse> {
-    console.log('login');
     const url = `${this.API_URL_LOGIN}/auth/login`;
     return this.httpClient.post<ServerResponse>(url, credentials)
       .pipe(

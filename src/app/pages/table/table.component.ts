@@ -30,7 +30,7 @@ export class TableComponent implements OnInit {
   getPaper(Paper: PaperModel) {
     this.PaperService.getOne(Paper.id).subscribe(
       response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.paper = response.data;
       }, error => {
         this.MessageService.error(error);
@@ -44,8 +44,8 @@ export class TableComponent implements OnInit {
         this.getPaper(response.data[0]);
 
         this.papers = response.data;
-        console.log(typeof this.paper);
-        console.log(this.paper);
+        // console.log(typeof this.paper);
+        // console.log(this.paper);
       }, error => {
         this.MessageService.error(error);
       }

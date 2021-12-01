@@ -57,7 +57,7 @@ export class UserComponent implements OnInit {
   getUser(User: UserModel) {
     this.userService.getOne(User.id).subscribe(
       response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.user = response.data;
       }, error => {
         this.messageService.error(error);
@@ -71,8 +71,8 @@ export class UserComponent implements OnInit {
         this.getUser(response.data[0]);
 
         this.Users = response.data;
-        console.log(typeof this.Users);
-        console.log(this.Users);
+        // console.log(typeof this.Users);
+        // console.log(this.Users);
       }, error => {
         this.messageService.error(error);
       }
